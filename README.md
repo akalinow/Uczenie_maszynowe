@@ -12,22 +12,22 @@ Wersja prowadzącego zawiera rozwiązania zadań wykonywanych na ćwiczeniach.
 
 Wersja studencka jest generowana automatycznie przez wykonanie skryptu
 [scripts/makeStudentsVersion.py][scripts/makeStudentsVersion.py].
-Skrypt usuwa rozwiązania i ładuje nową werjsę go gałęzi z usuniętym przrostkiem "_solutions"
+Skrypt usuwa rozwiązania i ładuje nową wersję do gałęzi z usuniętym przyrostkiem "_solutions"
 
-Framgenty komórek znajdujące się między znacznikami `#BEGIN SOLUTION` oraz `#END SOLUTION`
+Fragmenty komórek znajdujące się między znacznikami `#BEGIN_SOLUTION` oraz `#END_SOLUTION`
 zostaną zastapione trzema kropkami: `...`
 
 ``` python
 def classifier (X, threshold):
-    ### BEGIN SOLUTION
+    ### BEGIN_SOLUTION
     return X > threshold
-    ### END SOLUTION
+    ### END_SOLUTION
 ```
 
 The above in student's version will become:
 ``` python
 def classifier (X, threshold):
-    ### YOUR CODE HERE
+    ...
 ```
 
 ### Instrukcja:
@@ -36,8 +36,4 @@ cd Uczenie_maszynowe
 ./scripts/makeStudentsVersion.py
 ```
 
-
-```
-awk '/#BEGIN/{p=1}/#END/{p=0;print "\t\"...\\n\",";next}!p' Tests.nbconvert.ipynb > Tests.ipynb
-```
 
