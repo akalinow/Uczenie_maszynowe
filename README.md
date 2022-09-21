@@ -1,4 +1,4 @@
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/akalinow/uczenie_maszynowe)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/akalinow/Uczenie_maszynowe/blob/2022_2023)
 
 
 # Uczenie maszynowe - wersja dla prowadzących
@@ -36,5 +36,5 @@ cd Uczenie_maszynowe
 ./scripts/makeStudentsVersion.py
 ```
 
-**Uwaga**: komórka po znaczniku ```#END_SOLUTION``` musi zawierać jakieś niepuste linie.
+**Uwaga**: po znaczniku ```#END_SOLUTION``` komórka musi zawierać niepuste linie.
 
