@@ -21,10 +21,11 @@ print(colored("Removing solutions blocks.","blue"))
 fileList = glob.glob('./*.ipynb')
 
 for aFile in fileList:
-    input_name = aFile
-    output_name = aFile
-    result = subprocess.run(["awk", " /#BEGIN_SOLUTION/{p=1}/#END_SOLUTION/{p=0;print \"\\t\\\"...\\\\n\\\",\";next}!p", input_name, output_name], text=True, capture_output=True)
-
+    input_file_name = aFile
+    output_file = open("tmp.ipynb", "w")
+    result = subprocess.run(["awk", " /#BEGIN_SOLUTION/{p=1}/#END_SOLUTION/{p=0;print \"\\t\\\"...\\\\n\\\",\";next}!p", input_file_name],
+                            text=True, stdout=output_file)
+    subprocess.run(["mv","tmp.ipynb",input_file_name])
     
 print(colored("Commiting curent changes to students branch.","blue"))
 subprocess.run(["git", "commit","-a", "-m automatic commit"])
