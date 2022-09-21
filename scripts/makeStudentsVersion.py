@@ -22,7 +22,6 @@ print(colored("Removing solutions blocks.","blue"))
 fileList = glob.glob('./*.ipynb')
 for aFile in fileList:
     input_file_name = aFile
-    input_file_name = "01_Pakiety_numpy_pandas.ipynb"
     output_file = open("tmp.ipynb", "w")
     result = subprocess.run(["awk", " /#BEGIN_SOLUTION/{p=1}/#END_SOLUTION/{p=0;print \"    \\\"...\\\\n\\\", \";next}!p", input_file_name],
                             text=True, stdout=output_file)
