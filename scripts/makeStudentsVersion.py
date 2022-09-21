@@ -16,7 +16,7 @@ subprocess.run(["git", "commit","-a", "-m automatic commit"])
 
 print(colored("Switching to students branch.","blue"))
 students_branch_name = branch_name.replace("_solutions","")
-result = subprocess.run(["git", "checkout ","-b" + students_branch_name], text=True, capture_output=True)
+result = subprocess.run(["git", "checkout ","-b " + students_branch_name], text=True, capture_output=True)
 
 print(colored("Removing solutions blocks.","blue"))
 fileList = glob.glob('./*.ipynb')
