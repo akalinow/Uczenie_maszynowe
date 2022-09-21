@@ -24,7 +24,7 @@ for aFile in fileList:
     input_file_name = aFile
     input_file_name = "01_Pakiety_numpy_pandas.ipynb"
     output_file = open("tmp.ipynb", "w")
-    result = subprocess.run(["awk", " /#BEGIN_SOLUTION/{p=1}/#END_SOLUTION/{p=0;print \" \\t \\\" ...\\\\n \\\", \";next}!p", input_file_name],
+    result = subprocess.run(["awk", " /#BEGIN_SOLUTION/{p=1}/#END_SOLUTION/{p=0;print \"    \\\"...\\\\n\\\", \";next}!p", input_file_name],
                             text=True, stdout=output_file)
     subprocess.run(["mv","tmp.ipynb",input_file_name])
     
@@ -32,4 +32,4 @@ print(colored("Commiting curent changes to students branch.","blue"))
 subprocess.run(["git", "commit","-a", "-m automatic commit"])
 
 print(colored("Switching back to solutions branch.","blue"))
-subprocess.run(["git", "checkout ",branch_name], text=True, capture_output=True)
+subprocess.run(["git", "checkout",branch_name], text=True, capture_output=True)

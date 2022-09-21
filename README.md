@@ -19,9 +19,9 @@ zostaną zastapione trzema kropkami: `...`
 
 ``` python
 def classifier (X, threshold):
-    ### BEGIN_SOLUTION
+    #BEGIN_SOLUTION
     return X > threshold
-    ### END_SOLUTION
+    #END_SOLUTION
 ```
 
 The above in student's version will become:
@@ -36,4 +36,5 @@ cd Uczenie_maszynowe
 ./scripts/makeStudentsVersion.py
 ```
 
+**Uwaga**: komórka po znaczniku ```#END_SOLUTION``` musi zawierać jakieś niepuste linie.
 
