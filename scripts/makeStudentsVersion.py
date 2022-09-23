@@ -25,6 +25,7 @@ fileList = glob.glob('./*.ipynb')
 for aFile in fileList:
     input_file_name = aFile
     output_file = open("tmp.ipynb", "w")
+    input_file_name = "04_Walidacja_modelu.ipynb"
     result = subprocess.run(["awk", " /#BEGIN_SOLUTION/{p=1}/#END_SOLUTION/{p=0;print \"    \\\"...\\\\n\\\", \";next}!p", input_file_name],
                             text=True, stdout=output_file)
     if not testRun:
