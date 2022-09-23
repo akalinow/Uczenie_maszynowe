@@ -29,7 +29,7 @@ for aFile_name in fileList:
     output_file = open("tmp.ipynb", "w")
     subprocess.run(["git","restore", "--source",branch_name,"--",aFile_name], text=True, capture_output=True)
     subprocess.run(["git","add",aFile_name], text=True, capture_output=True)
-    "...\n", 
+    result = subprocess.run(["awk", " /#BEGIN_SOLUTION/{p=1}/#END_SOLUTION/{p=0;print \"    \\\"...\\\\n\\\", \";next}!p", input_file_name],
                             text=True, stdout=output_file)
     if not testRun:
         subprocess.run(["mv","tmp.ipynb",input_file_name])
