@@ -28,7 +28,7 @@ fileList = glob.glob('./*.ipynb')
 for aFile_name in fileList:
     input_file_name = aFile_name
     output_file = open("tmp.ipynb", "w")
-    subprocess.run(["git","--source",branch_name,"--",aFile_name], text=True, capture_output=True)
+    subprocess.run(["git","restore", "--source",branch_name,"--",aFile_name], text=True, capture_output=True)
     subprocess.run(["git","add",aFile_name], text=True, capture_output=True)
     result = subprocess.run(["awk", " /#BEGIN_SOLUTION/{p=1}/#END_SOLUTION/{p=0;print \"    \\\"...\\\\n\\\", \";next}!p", input_file_name],
                             text=True, stdout=output_file)
