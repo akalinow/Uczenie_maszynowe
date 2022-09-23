@@ -22,9 +22,8 @@ if not testRun:
 print(colored("Removing solutions blocks.","blue"))
 
 result = subprocess.run(["git","diff","--name-only", branch_name, students_branch_name], text=True, capture_output=True)
-fileList = result.stdout.split("\n")
+fileList = result.stdout.rstrip("\n").split("\n")
 
-fileList = glob.glob('./*.ipynb')
 for aFile_name in fileList:
     input_file_name = aFile_name
     output_file = open("tmp.ipynb", "w")
