@@ -27,6 +27,8 @@ print(result.stderr)
 fileList = result.stdout.rstrip("\n").split("\n")
 
 for aFile_name in fileList:
+    if aFile_name.find("README")!=-1:
+        continue
     input_file_name = aFile_name
     output_file = open("tmp.ipynb", "w")
     subprocess.run(["git","restore", "--source",branch_name,"--",aFile_name], text=True, capture_output=True)
