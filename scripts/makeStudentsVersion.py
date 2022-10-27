@@ -19,11 +19,9 @@ print(colored("Switching to students branch.","blue"))
 students_branch_name = branch_name.replace("_solutions","")
 if not testRun:
     result = subprocess.run(["git", "checkout",students_branch_name], text=True, capture_output=True)
-    print(result.stderr)
 print(colored("Removing solutions blocks.","blue"))
 
 result = subprocess.run(["git","diff","--name-only", branch_name, students_branch_name], text=True, capture_output=True)
-print(result.stderr)
 fileList = result.stdout.rstrip("\n").split("\n")
 
 for aFile_name in fileList:
@@ -33,7 +31,6 @@ for aFile_name in fileList:
     output_file = open("tmp.ipynb", "w")
     subprocess.run(["git","restore", "--source",branch_name,"--",aFile_name], text=True, capture_output=True)
     result = subprocess.run(["git","add",aFile_name], text=True, capture_output=True)
-    print(result.stderr)
     result = subprocess.run(["awk", " /#BEGIN_SOLUTION/{p=1}/#END_SOLUTION/{p=0;print \"    \\\"...\\\\n\\\", \";next}!p", input_file_name],
                             text=True, stdout=output_file)
     if not testRun:
@@ -41,6 +38,7 @@ for aFile_name in fileList:
     
 print(colored("Commiting curent changes to students branch.","blue"))
 if not testRun:
+    subprocess.run(["git", "status"])
     subprocess.run(["git", "commit","-a", "-m automatic commit"])
 
 print(colored("Switching back to solutions branch.","blue"))
