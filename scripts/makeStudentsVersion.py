@@ -25,13 +25,13 @@ result = subprocess.run(["git","diff","--name-only", branch_name, students_branc
 fileList = result.stdout.rstrip("\n").split("\n")
 
 for aFile_name in fileList:
-    if aFile_name.find("README")!=-1:
+    if aFile_name.find("README")!=-1 or  aFile_name.find("makeStudentsVersion.py")!=-1:
         continue
     input_file_name = aFile_name
     output_file = open("tmp.ipynb", "w")
     subprocess.run(["git","restore", "--source",branch_name,"--",aFile_name], text=True, capture_output=True)
     result = subprocess.run(["git","add",aFile_name], text=True, capture_output=True)
-    "...\n", 
+    result = subprocess.run(["awk", " /#BEGIN_SOLUTION/{p=1}/#END_SOLUTION/{p=0;print \"    \\\"...\\\\n\\\", \";next}!p", input_file_name],
                             text=True, stdout=output_file)
     if not testRun:
         subprocess.run(["mv","tmp.ipynb",input_file_name])
